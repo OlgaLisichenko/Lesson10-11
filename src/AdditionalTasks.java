@@ -10,7 +10,7 @@ public class AdditionalTasks {
                 "Если таких слов несколько, то вывести последнее из них.";
 
         String s = replaceCharactersWithSpaces(str);
-        String[] array = s.toLowerCase().split(" ");
+        String[] array = s.split(" ");
         bubbleSorting(array);
         String maxLengthWord = array[array.length - 1];
         String minLengthWord = findShortestWord(array);
