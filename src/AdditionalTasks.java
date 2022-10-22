@@ -9,19 +9,29 @@ public class AdditionalTasks {
                 "Найти самое длинное слово в строке и вывести его на экран. " +
                 "Если таких слов несколько, то вывести последнее из них.";
 
-        String minLengthWord = null;
+        String s = replaceCharactersWithSpaces(str);
+        String[] array = s.toLowerCase().split(" ");
+        bubbleSorting(array);
+        String maxLengthWord = array[array.length - 1];
+        String minLengthWord = findShortestWord(array);
 
+        System.out.println("Отсортированный массив строк: \n" + Arrays.toString(array));
+        System.out.println("Самое длинное слово в строке: " + maxLengthWord);
+        System.out.println("Самое короткое слово в строке: " + minLengthWord);
+    }
+
+    public static String replaceCharactersWithSpaces(String str) {
         char[] a = str.toCharArray();
         for (int i = 0; i < a.length; i++) {
             if (a[i] < 'А' || a[i] > 'я') {
                 a[i] = ' ';
             }
         }
-        String s = String.valueOf(a);
+        return String.valueOf(a);
+    }
 
-        String[] array1 = s.toLowerCase().split(" ");
-
-        boolean sorted = false;   // сортировка пузырьком
+    public static String[] bubbleSorting(String[] array1) {
+        boolean sorted = false;
         String temp;
         while (!sorted) {
             sorted = true;
@@ -34,20 +44,21 @@ public class AdditionalTasks {
                 }
             }
         }
+        return array1;
+    }
 
-        for (int i = 0; i < array1.length; i++) {
-            if (!array1[i].isEmpty() || !array1[i].isBlank()) {
-                if (array1[i].length() < array1[i + 1].length()) {
-                    minLengthWord = array1[i];
+    public static String findShortestWord(String[] array) {
+        String minLengthWord = null;
+        for (int i = 0; i < array.length; i++) {
+            if (!array[i].isEmpty() || !array[i].isBlank()) {
+                if (array[i].length() < array[i + 1].length()) {
+                    minLengthWord = array[i];
                     break;
                 }
             }
         }
-        System.out.println("Отсортированный массив строк: \n" + Arrays.toString(array1));
-        System.out.println("Самое длинное слово в строке: " + array1[array1.length - 1]);
-        System.out.println("Самое короткое слово в строке: " + minLengthWord);
+        return minLengthWord;
     }
-
 
     public static void task2() {
         System.out.println("_____ Additional Task 2 _____");
