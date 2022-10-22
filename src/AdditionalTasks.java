@@ -37,7 +37,7 @@ public class AdditionalTasks {
 
         for (int i = 0; i < array1.length; i++) {
             if (!array1[i].isEmpty() || !array1[i].isBlank()) {
-                if (array1[i].length() <= array1[i + 1].length()) {
+                if (array1[i].length() < array1[i + 1].length()) {
                     minLengthWord = array1[i];
                     break;
                 }
