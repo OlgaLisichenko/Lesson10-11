@@ -39,26 +39,26 @@ public class DocNumber {
 
     //Проверить содержит ли номер документа последовательность abc и вывети сообщение содержит или нет
     //(причем, abc и ABC считается одинаковой последовательностью).
-    public static void isDocNumberContainsABC(String s) {
-        if (s.contains("abc") || s.contains("ABC")) {
-            System.out.println("The document number contains 'ABC' or 'abc'");
-        } else
-            System.out.println("The document number doesn't contain 'ABC' or 'abc'");
+    public static void isDocNumberContainsABC(String s) throws NoABCSequence {
+        if (!s.contains("abc") && !s.contains("ABC")) {
+            throw new NoABCSequence("The document number doesn't contain 'ABC' or 'abc'");
+        }
+        System.out.println("The document number contains 'ABC' or 'abc'");
     }
 
     //Проверить начинается ли номер документа с последовательности 555.
-    public static void isDocNumberBeginsWith555(String s) {
-        if (s.startsWith("555")) {
-            System.out.println("The document number begins with '555'");
-        } else
-            System.out.println("The document number doesn't begin with '555'");
+    public static void isDocNumberBeginsWith555(String s) throws No555AtTheBeginning {
+        if (!s.startsWith("555")) {
+            throw new No555AtTheBeginning("The document number doesn't begin with '555'");
+        }
+        System.out.println("The document number begins with '555'");
     }
 
     //Проверить заканчивается ли номер документа на последовательность 1a2b.
-    public static void isDocNumberEndsWith1a2b(String s) {
-        if (s.endsWith("1a2b")) {
-            System.out.println("The document number ends with '1a2b'");
-        } else
-            System.out.println("The document number doesn't end with '1a2b'");
+    public static void isDocNumberEndsWith1a2b(String s) throws No1a2bAtTheEnd {
+        if (!s.endsWith("1a2b")) {
+            throw new No1a2bAtTheEnd("The document number doesn't end with '1a2b'");
+        }
+        System.out.println("The document number ends with '1a2b'");
     }
 }

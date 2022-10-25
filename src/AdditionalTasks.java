@@ -68,6 +68,9 @@ public class AdditionalTasks {
         for (int i = 0, j = 0; i < s.length && j < s.length; i++, j++) {
             System.out.print(s[i]);
             System.out.print(s[j]);
+
+//            for (char i : s) {
+//                System.out.print(i + "" + i);
         }
     }
 }
