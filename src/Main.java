@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
 
     static Scanner scanner = new Scanner(System.in);
-    public static final String STR = "5554-ABC-5678-rTy-1a3b";
+    public static final String STR = "1554-ABB-5678-rTy-1a1b";
 
     public static void main(String[] args) {
         String message = "\nEnter the task number: 1, 2 or 3. 0 - closing the program.";
@@ -40,8 +40,20 @@ public class Main {
         DocNumber.replaceWithAsterisks(STR);
         DocNumber.printLettersToLowerCase(STR);
         DocNumber.printLettersToUpperCase(STR);
-        DocNumber.isDocNumberContainsABC(STR);
-        DocNumber.isDocNumberBeginsWith555(STR);
-        DocNumber.isDocNumberEndsWith1a2b(STR);
+        try {
+            DocNumber.isDocNumberContainsABC(STR);
+        } catch (NoABCSequence noABCSequence) {
+            System.out.println("Error: " + noABCSequence.getMessage());
+        }
+        try {
+            DocNumber.isDocNumberBeginsWith555(STR);
+        } catch (No555AtTheBeginning no555AtTheBeginning) {
+            System.out.println("Error: " + no555AtTheBeginning.getMessage());
+        }
+        try {
+            DocNumber.isDocNumberEndsWith1a2b(STR);
+        } catch (No1a2bAtTheEnd no1a2bAtTheEnd) {
+            System.out.println("Error: " + no1a2bAtTheEnd.getMessage());
+        }
     }
 }
